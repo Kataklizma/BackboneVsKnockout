@@ -1,0 +1,21 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Share/_Backbone.cshtml";
+}
+
+<div id="main"></div>
+
+<script type="text/template" id="InvoiceView">
+                <a href="#demo-mail">
+                    <h3>{{invoice.nr}}</h3>
+                    <p class="topic"><strong>{{invoice.date}}</strong></p>
+                    <p>Sure, let's plan on meeting at Highland Kitchen at 8:00 tonight. Can't wait! </p>
+                    <p class="ui-li-aside"><strong>4:48</strong>PM</p>
+                </a>
+                <a href="#" class="delete">Delete</a>
+</script>
+<script type="text/template" id="InvoiceCollectionView">
+    <ul id="list" class="touch" data-role="listview" data-icon="false" data-split-icon="delete" data-split-theme="d">
+    </ul>
+     
+</script>

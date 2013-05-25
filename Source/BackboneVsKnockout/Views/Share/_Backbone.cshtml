@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>_Backbone</title>
+    <link href="~/Content/jquery.mobile-1.3.0.css" rel="stylesheet" />
+    <link href="~/Content/customSite.css" rel="stylesheet" />
+</head>
+<body>
+    <div data-url="sample-page" data-role="page" id="sample-page" data-title="Inbox" data-theme="d">
+    <div data-role="header" data-position="fixed" data-theme="b">
+        <h1>Inbox</h1>
+        <a href="#demo-intro" data-rel="back" data-icon="arrow-l" data-iconpos="notext">Back</a>
+        <a href="#" onclick="window.location.reload()" data-icon="back" data-iconpos="notext">Refresh</a>
+    </div><!-- /header -->
+    <div data-role="content">
+        @RenderBody()
+    </div>
+        <div id="confirm" class="ui-content" data-role="popup" data-theme="none">
+        <p id="question">Are you sure you want to delete</p>
+        <div class="ui-grid-a">
+            <div class="ui-block-a">
+                <a id="yes" data-role="button" data-mini="true" data-shadow="false" data-theme="b" data-rel="back">Yes</a>
+            </div>
+            <div class="ui-block-b">
+                <a id="cancel" data-role="button" data-mini="true" data-shadow="false" data-theme="b" data-rel="back">Cancel</a>
+            </div>
+        </div>
+        </div><!-- /popup -->
+        </div>
+    <script src="~/Scripts/Lib/jquery-1.7.2.js"></script>
+    <script src="~/Scripts/Lib/jquery.mobile-1.3.0.js"></script>
+    <script src="~/Scripts/Lib/underscore.js"></script>
+    <script src="~/Scripts/Lib/backbone.js"></script>
+    <script src="~/Scripts/templates.js"></script>
+    <script src="~/Scripts/Modules/Invoice.js"></script>
+    <script src="~/Scripts/Modules/Items.js"></script>
+    <script src="~/Scripts/Modules/App.js"></script>
+    <script src="~/Scripts/customSiteScript.js"></script>
+</body>
+</html>
