@@ -1,0 +1,46 @@
+﻿Dear Team,
+ 
+attached you find a very early version of the first beans module based on Windows Azure.
+Only Search and the Edit buttons are working.
+Our objective is to get it to look and work like the original VAT module on beans.moussa.net
+ 
+To get it to work on your PCs you have to run it in Visual Studio. It needs to run under localhost/…
+It won’t work if you just open it in the browser by double clicking it!
+ 
+There is not much code.
+Beside the html file there is a file called underscore.js which is a templating framework. You will find some documentation on the Internet.
+The module specific code can be found in app.js
+ 
+So play around with the module. Try to fix the formatting and maybe you can implement the update and the insert methods.
+The code for update starts at line 76 (or search for the “Handle update”).
+The code for insert starts at line 57  (or search for the “Handle insert”).
+ 
+Maybe you have an idea how to integrate it in backbone.js or knockout.js
+ 
+Have fun and contact me in case you have any questions.
+Regards,
+Amir
+
+-----------------------------------------------
+Hello everybody,
+ 
+beside the Azure server I’m hosting websites, mails and also databases with a hosting provider in Germany (netspec.de).
+We are currently migrating all services to one server (89.107.69.201).
+I also migrated the beans database to this new server.
+ 
+So if you want to access it, here is the access information:
+SQL Server: 89.107.69.201\SQLExpress
+Database: Beans (was beans, now the first letter is capital. I don’t think that this makes a different)
+Username: BeansUser (was BeanUser before without S)
+PW: summer2013 (stays the same)
+ 
+@Tobias and Patrick:
+I have changes the connection strings in the web.config and checked it in. Please download the latest version for further development. Please also test your modules. If there are any issues, then please check the table structures too.
+ 
+@Tobias:
+Please deploy the latest version on the new server. FTP User: beansUser, PW: same as above. The new address is http://beans.peacequare.com I have uploaded a version, but it’s not working correctly. I’m sure you know how to fix it.
+Please inform me when it’s done, so I can inform the client about the new link.
+ 
+Thanks,
+Regards,
+Amir
