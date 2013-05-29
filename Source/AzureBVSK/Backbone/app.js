@@ -18,7 +18,7 @@ Backbone.sync = function (method, model, options) {
     switch (method) {
         case "create":
             data = model.toJSON();
-            tbl.insert(data).read().done(success, errorData);
+            tbl.insert(data).done(success, errorData);
             break;
         case "update":
             data = model.toJSON();
@@ -49,12 +49,32 @@ Backbone.sync = function (method, model, options) {
     var AppView = Backbone.View.extend({
         el: "body",
         initialize: function() {
-            this.listenTo(this, 'detailView', this.detailView);
-            new App.VatCategory.Views.Section();
+            App.categorys = new App.Category.Collection();
+            this.listenTo(App.categorys, 'reset', this.renderCategorySection);
+            this.listenTo(App.categorys, 'change', this.renderCategorySection);
+            this.listenTo(App.categorys, 'add', this.renderCategorySection);
+            App.categorys.fetch({reset:'true'});
         },
-        detailView: function () {
+        events: {
+            'change #vatCategorySearch': 'categorySearch',
+            'click #btnNewEntity' : 'addNewCategory'
+        },
+        addNewCategory : function() {
+            App.Category.Views.detail = new App.Category.Views.Detail({ model: new App.Category.Model() });
+        },
+        categorySearch : function(e) {
+            App.categorys.fetch({ searchCriteria: $(e.target).val(), reset: true });
+        },
+        renderCategorySection: function () {
+            this.$el.find('#listVatCategorys').empty().append(new App.Category.Views.Collection({ collection: App.categorys }).render().el);
+            this.$el.find('ul').listview();
+            return this;
+        },
+        renderDetailSection:function() {
+            alert("Detail");
+        },
+        render:function() {
             
-            new VatCategory.Views.DetailView({ model: this.model });
         }
     });
     new AppView();

@@ -38,19 +38,16 @@
             <div data-role="content" class="ui-grid-a">
                 <div id="leftVatCategorySection" class="ui-block-a" style="width: 31%; padding-left: 0px;">
                     <h2>Cuberry Mobile in the Cloud</h2>
-                    <input type="button" id="btnNewEntity" value="Neuen MWSt.-Satz anlegen" class="button" onclick="newEntity();" data-theme="b" />
+                    <input type="button" id="btnNewEntity" value="Neuen MWSt.-Satz anlegen" class="button" data-theme="b" />
                     <input class="itemsFind" type='search' id='vatCategorySearch' placeholder='find...' />
-                    <div>
-                        <div id="listVatCategorys">
-                        </div>
-                        <form id='add-item'>
+                    <div id="listVatCategorys">
+                    </div>
+                    <form id='add-item'>
                             <input type='text' id='new-item-text' placeholder='Enter new task' />
                             <button type='submit'>Add</button>
                         </form>
-                    </div>
                 </div>
                 <div id="DivDetailView" class="ui-block-b" style="width: 69%; padding-left: 30px; padding-top: 0px; padding-right: 0px;">
-                    <!--   <div class="content-primary" id="DivDetailView" >		-->
                 </div>
             </div>
             <div data-role="footer">
@@ -65,12 +62,14 @@
             <p>{{vatCategory.VATPercentage}}</p>
     </script>
     <script type="text/template" id="VatCategoryList">
+        <h1>{{length}}</h1>
         <ul data-role="listview" data-theme="d" data-inset="true">
         </ul>
+    
     </script>
     <script id="VatCategoryDetail" type="text/template">
         <div class="ui-body ui-body-a">
-            <div class="ui-block-a  ">
+            <div class="ui-block-a">
                 <input class="item-text vatPercentage" value="{{vatCategory.VATPercentage}}">
             </div>
             <div class="ui-block-b">
@@ -91,7 +90,8 @@
     <script type="text/javascript" src="/Scripts/Libs/underscore.min.js"></script>
     <script type="text/javascript" src="/Scripts/Libs/backbone.min.js"></script>
     <script type="text/javascript" src="templates.js"></script>
-    <script type="text/javascript" src="vatCategory.js"></script>
+    <script type="text/javascript" src="category.js"></script>
+ <!--   <script type="text/javascript" src="vatCategory.js"></script>-->
     <script type="text/javascript" src='app.js'></script>
 
 </body>

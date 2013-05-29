@@ -58,6 +58,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Backbone\app.js" />
+    <Content Include="Backbone\category.js" />
     <Content Include="Backbone\Index.html" />
     <Content Include="Backbone\templates.js" />
     <Content Include="Backbone\vatCategory.js" />
