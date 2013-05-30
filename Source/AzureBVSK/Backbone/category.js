@@ -2,13 +2,13 @@
 (function (App) {
     _.templateSettings.interpolate = /\{\{(.*?)\}\}/g;
     var Category = { Views: {} };
-    
+
     Category.Model = Backbone.Model.extend({
         url: function () {
             return "FiVatCategory/";
         }
     });
-    
+
     Category.Collection = Backbone.Collection.extend({
         model: Category.Model,
         url: 'FiVatCategory',
@@ -30,6 +30,9 @@
     });
     Category.Views.Collection = Backbone.View.extend({
         template: _.template($('#VatCategoryList').html()),
+        initialize: function () {
+            this.listenTo(this.collection, 'add', this.addOne);
+        },
         render: function () {
             this.el.innerHTML = this.template({ length: this.collection.length });
             this.$el.find('ul').empty();
@@ -45,15 +48,28 @@
         //el:'#DivDetailView',
         template: _.template($('#VatCategoryDetail').html()),
         initialize: function () {
-            
+
             this.render();
         },
         events: {
-            'click button': 'saveVatCategory'
+            'click .save': 'saveVatCategory',
+            'click .delete': 'deleteVatCategory'
+        },
+        deleteVatCategory: function () {
+            var decision = confirm("Deleting item");
+            if (decision === true) {
+                App.categorys.remove(this.model);
+                this.model.destroy();
+                $('#DivDetailView').empty();
+
+            }
         },
         saveVatCategory: function () {
-            
+
             this.model.set({ VATPercentage: this.$el.find('.vatPercentage').val(), VATCategoryNameEn: this.$el.find('.vatCategoryName').val() });
+            if (this.model.isNew()) {
+                App.categorys.add(this.model);
+            }
             this.model.save();
         },
         render: function () {
@@ -63,7 +79,7 @@
             $('#DivDetailView').trigger('create');
             return this;
         },
-        });
+    });
 
     App.Category = Category;
 })(App);

@@ -41,7 +41,7 @@ Backbone.sync = function (method, model, options) {
             break;
         case "delete":
             data = { id: model.get('id') };
-            tbl.del(data).read().done(success, errorData);
+            tbl.del(data).done(success, errorData);
             break;
     }
 };
@@ -52,7 +52,7 @@ Backbone.sync = function (method, model, options) {
             App.categorys = new App.Category.Collection();
             this.listenTo(App.categorys, 'reset', this.renderCategorySection);
             this.listenTo(App.categorys, 'change', this.renderCategorySection);
-            this.listenTo(App.categorys, 'add', this.renderCategorySection);
+            this.listenTo(App.categorys, 'remove', this.renderCategorySection);
             App.categorys.fetch({reset:'true'});
         },
         events: {
