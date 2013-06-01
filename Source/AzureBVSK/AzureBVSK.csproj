@@ -65,8 +65,12 @@
     <Content Include="Default\app.js" />
     <Content Include="Email.txt" />
     <Content Include="Default\index.html" />
+    <Content Include="Knockout\app.js" />
+    <Content Include="Knockout\index.html" />
     <Content Include="Scripts\Libs\backbone.js" />
     <Content Include="Scripts\Libs\backbone.min.js" />
+    <Content Include="Scripts\Libs\knockout-2.2.1.debug.js" />
+    <Content Include="Scripts\Libs\knockout-2.2.1.js" />
     <Content Include="Scripts\Libs\underscore.js" />
     <Content Include="Scripts\Libs\underscore.min.js" />
     <Content Include="Styles\customSite.css" />
@@ -94,9 +98,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Knockout\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

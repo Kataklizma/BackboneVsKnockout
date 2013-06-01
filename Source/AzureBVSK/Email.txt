@@ -44,3 +44,56 @@ Please inform me when it’s done, so I can inform the client about the new link
 Thanks,
 Regards,
 Amir
+
+var App = App || {};
+var AZUREClient = new WindowsAzure.MobileServiceClient('https://beans.azure-mobile.net/', 'PzOgnOzLrLxdRmTcMawYYxkBZdvxXo80');
+
+$(document).ready(function () {
+    var tbl = AZUREClient.getTable('FiVatCategory');
+    var categoryViewModel = function () {
+        var self = this;
+        self.getCategories = function (val) {
+            var data = [];
+            tbl.read({ VATCategoryNameEn: val }).done(
+              function (d) {
+                  data = d;
+              });
+            return data;
+        };
+        this.items = ko.observableArray(this.getCategories(''));
+        this.searchText = ko.observable();
+        this.searchCategory = ko.computed(this.searchText)
+                            .extend({ throttle: 500 });
+        
+        this.searchCategory.subscribe(function (val) {
+            self.items = self.getCategories(val);
+        }, this);
+        
+    }.bind(this);
+    ko.applyBindings(new categoryViewModel());
+});
+
+
+var App = App || {};
+var AZUREClient = new WindowsAzure.MobileServiceClient('https://beans.azure-mobile.net/', 'PzOgnOzLrLxdRmTcMawYYxkBZdvxXo80');
+
+$(document).ready(function () {
+    var tbl = AZUREClient.getTable('FiVatCategory');
+    var categoryViewModel = function (items) {
+        this.items = ko.observableArray(items);
+        this.searchText = ko.observable();
+        this.searchCategory = ko.computed(this.searchText).extend({ throttle: 500 });
+        
+        this.searchCategory.subscribe(function (val) {
+            if (val !== '')
+                console.log(val);
+        }, this);
+        
+    }.bind(this);
+    tbl.read({ VATCategoryNameEn: '' }).done(
+       function (items) {
+           ko.applyBindings(new categoryViewModel(items));
+       }, function (error) {
+           alert(error);
+       });
+});
