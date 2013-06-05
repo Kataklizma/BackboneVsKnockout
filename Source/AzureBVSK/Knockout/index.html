@@ -50,9 +50,9 @@
                     </form>
                     <ul id='todo-items' data-role="listview" data-theme="d" data-bind="foreach: items" data-inset="true">
                         <li>
-                            <a onclick="" />
+                            <a href="#" data-bind="click: $root.selectCategory">
                             <h3 data-bind="text: VATCategoryNameEn"></h3>
-                            <p data-bind="text: VATPercentage"></p>
+                            <p data-bind="text: VATPercentage"></p></a>
                         </li>
                     </ul>
                     <div>
@@ -63,6 +63,18 @@
                     </div>
                 </div>
                 <div id="DivDetailView" class="ui-block-b" style="width: 69%; padding-left: 30px; padding-top: 0px; padding-right: 0px;">
+                    <div data-bind="visible: detailView, with: selectedCategory" class="ui-body ui-body-a">
+                        <div class="ui-block-a">
+                            <input class="item-text" data-bind="value: VATPercentage">
+                        </div>
+                        <div class="ui-block-b">
+                            <input class="item-text" data-bind="value: VATCategoryNameEn">
+                        </div>
+                        <div class="ui-block-c">
+                            <button type="button" class="save" data-bind="click: $root.save" data-theme="c">Save</button></div>
+                        <div class="ui-block-c">
+                            <button type="button" class="delete" data-bind="click: $root.delete" data-theme="c">Delete</button></div>
+                    </div>
                 </div>
             </div>
             <div data-role="footer">
