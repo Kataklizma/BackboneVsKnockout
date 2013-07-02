@@ -66,7 +66,13 @@
     <Content Include="Email.txt" />
     <Content Include="Default\index.html" />
     <Content Include="Knockout\app.js" />
+    <Content Include="Knockout\appModule.js" />
     <Content Include="Knockout\index.html" />
+    <Content Include="Knockout\koUtils.js" />
+    <Content Include="Knockout\vatCategory.js" />
+    <Content Include="KoMobile\app.js" />
+    <Content Include="KoMobile\Index.html" />
+    <Content Include="KoMobile\koUtils.js" />
     <Content Include="Scripts\Libs\backbone.js" />
     <Content Include="Scripts\Libs\backbone.min.js" />
     <Content Include="Scripts\Libs\knockout-2.2.1.debug.js" />

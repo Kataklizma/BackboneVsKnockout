@@ -12,7 +12,6 @@ $(document).ready(function () {
         var self = this;
         
         self.getCategories = function (val) {
-            console.log("call GetCategories");
             tbl.read({ VATCategoryNameEn: val }).done(
               function (d) {
                   self.items($.map(d, function (item) {
@@ -20,13 +19,22 @@ $(document).ready(function () {
                   }));
               });
         };
-        self.saveCategory = function(val) {
-            tbl.insert(val).done(function (d) {
-                self.detailView(false);//hide view
-                self.items.push(val);
-            }, function (err) {
-                alert(err);
-            });
+        self.saveCategory = function (val) {
+            if (val.id != undefined && val.id > 0) {
+                tbl.update(val).done(function (d) {
+                    self.detailView(false);//hide view
+                }, function (err) {
+                    alert(err);
+                });
+            } else {
+                tbl.insert(val).done(function (d) {
+                    self.detailView(false);//hide view
+                    self.items.push(val);
+                }, function (err) {
+                    alert(err);
+                });
+            }
+            
         };
         self.deleteCategory = function (val) {
             tbl.del({ id: val }).done(function (d) {
@@ -55,19 +63,22 @@ $(document).ready(function () {
             self.selectedCategory(null);
             self.detailView(false);
         };
+        self.insert = function (elementToSelect) {
+            var d = { id: undefined, VATCategoryNameEn: "name", VATPercentage: 1 };
+            var cat = new category(d);
+            self.selectedCategory(cat);
+            self.detailView(true);
+        };
         self.delete = function (elementToDelete) {
             var element = ko.toJS(self.selectedCategory);
             self.deleteCategory(element.id);
             self.items.remove(elementToDelete);
-            //self.selectedCategory(null);
-            //
         };
-        
-        
 
         self.searchCategory.subscribe(function (val) {
             self.getCategories(val);
         }, this);
+        
     }.bind(this);
     ko.applyBindings(new categoryViewModel());
 });

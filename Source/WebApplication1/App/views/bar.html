@@ -1,0 +1,16 @@
+﻿<div data-role="page" id="secondPage">
+
+	<div data-role="header">
+		<h1 data-bind="text: title"></h1>
+	</div><!-- /header -->
+
+	<div data-role="content">	
+		<p>I'm first in the source order so I'm shown as the page.</p>		
+	    <p>View internal page called <a href="#/home">home</a></p>	
+        <a data-bind="click: callHome()">click test</a>
+	</div><!-- /content -->
+
+	<div data-role="footer">
+		<h4>Page Footer</h4>
+	</div><!-- /footer -->
+</div><!-- /page -->
