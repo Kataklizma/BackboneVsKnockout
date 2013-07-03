@@ -8,8 +8,9 @@
             app.showMessage('Search not yet implemented...');
         },
         activate: function () {
+            router.mapAuto('durandal');
             if (authentication.isLoggedIn() === true) {
-                return router.activate('welcome');
+                return router.activate('menu');
             } else {
                 return router.activate('login');
             }

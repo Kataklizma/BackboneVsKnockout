@@ -4,7 +4,10 @@
         Name : ko.observable(),
         Pass : ko.observable(),
         LogIn: function () {
-            authentication.login('welcome');
+            authentication.login('#/menu');
+        },
+        userIsLogIn: function() {
+            return !authentication.isLoggedIn();
         }
     };
 });
